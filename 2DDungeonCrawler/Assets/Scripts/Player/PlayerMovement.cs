@@ -18,8 +18,32 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        //horizontal = Input.GetAxisRaw("Horizontal");
+        //vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    public void Up()
+    {
+        vertical = 1;
+    }
+
+    public void Down() { vertical = -1;}
+
+    public void Left()
+    {
+        horizontal = -1;
+    }
+
+    public void Right() { horizontal = 1; }
+
+    public void horUp()
+    {
+        horizontal = 0;
+    }
+
+    public void verUp()
+    {
+        vertical = 0;
     }
 
     private void FixedUpdate()
