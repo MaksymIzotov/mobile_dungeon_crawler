@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TotemController : MonoBehaviour
 {
+    [SerializeField] GameObject minimapHighlight;
+
     private Animator animator;
 
     private bool isUsed;
@@ -15,8 +17,9 @@ public class TotemController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isUsed) { return; }
-        if(collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player")) { return; }
 
+        Destroy(minimapHighlight);
         animator.Play("Use");
         isUsed = true;
     }

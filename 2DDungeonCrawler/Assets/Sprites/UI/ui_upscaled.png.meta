@@ -223,6 +223,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: minimap_backround
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 16
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe0a0e156f4b7c4c805de85db20aa1a
+      internalID: -1159077934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -239,6 +260,7 @@ TextureImporter:
       green_bar: 754047823
       hp_bar: -1344307501
       ui_upgrade: -1453058128
+      minimap_backround: -1159077934
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
