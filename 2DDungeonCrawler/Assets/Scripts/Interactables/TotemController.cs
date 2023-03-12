@@ -19,6 +19,7 @@ public class TotemController : MonoBehaviour
         if (isUsed) { return; }
         if (!collision.CompareTag("Player")) { return; }
 
+        GameManager.instance.ActivateTotem();
         Destroy(minimapHighlight);
         animator.Play("Use");
         isUsed = true;

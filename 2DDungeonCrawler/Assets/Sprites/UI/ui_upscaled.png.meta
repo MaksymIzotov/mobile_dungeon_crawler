@@ -232,7 +232,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,6 +240,27 @@ TextureImporter:
       bones: []
       spriteID: ebe0a0e156f4b7c4c805de85db20aa1a
       internalID: -1159077934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hp_bulb
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 124
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b508d306a96075246a0cfecaa244dd0c
+      internalID: 1863850769
       vertices: []
       indices: 
       edges: []
@@ -257,6 +278,8 @@ TextureImporter:
     nameFileIdTable:
       ui_bars: -1305548516
       mana_bar: 220863099
+      hp_bar_small: 1725030542
+      hp_bulb: 1863850769
       green_bar: 754047823
       hp_bar: -1344307501
       ui_upgrade: -1453058128

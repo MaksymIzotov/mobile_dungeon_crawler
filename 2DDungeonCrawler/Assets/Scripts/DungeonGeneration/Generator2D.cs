@@ -9,6 +9,8 @@ public class Generator2D : MonoBehaviour {
     private const string WALL_TAG = "Wall";
     private const string SPAWNPOINT_TAG = "Spawnpoint";
 
+    public static Generator2D Instance;
+
     enum CellType {
         None,
         Room,
@@ -55,31 +57,42 @@ public class Generator2D : MonoBehaviour {
     HashSet<Prim.Edge> selectedEdges;
 
     List<Vector2Int> occupiedPos;
-    List<GameObject> Instances;
     GameObject dungeon;
 
     private void Awake()
     {
+        Instance = this;
         Generate();
     }
 
     private void Start()
     {
         GameSetup.Instance.SpawnPlayer();
+        GameManager.instance.SetupTotemsAmount();
     }
 
-    private void Generate() {
+    public void IncreaseSize()
+    {
+        size.x += 5;
+        size.y += 5;
+
+        roomCount += 5;
+    }
+
+    public void Generate() {
         occupiedPos = new List<Vector2Int>();
         random = new Random();
         grid = new Grid2D<CellType>(size, Vector2Int.zero);
         rooms = new List<Room>();
-        Instances = new List<GameObject>();
 
         DungeonParentSetup();
         PlaceRooms();
         Triangulate();
         CreateHallways();
         PathfindHallways();
+
+        occupiedPos.Clear();
+        rooms.Clear();
     }
 
 
