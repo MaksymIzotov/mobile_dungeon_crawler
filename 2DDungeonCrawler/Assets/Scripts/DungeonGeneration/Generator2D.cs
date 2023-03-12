@@ -65,7 +65,7 @@ public class Generator2D : MonoBehaviour {
 
     private void Start()
     {
-        //Spawn player
+        GameSetup.Instance.SpawnPlayer();
     }
 
     private void Generate() {
