@@ -859,9 +859,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 847920152}
+  - {fileID: 1763881810}
   - {fileID: 1761228209}
   - {fileID: 1339112707}
-  - {fileID: 1763881810}
   m_Father: {fileID: 2061493666}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1437,6 +1437,10 @@ MonoBehaviour:
   roomMaxSize: 6
   corridorPrefab:
   - {fileID: 3796758120245086421, guid: db89957a1958f8e46bd4396a4bba3e4d, type: 3}
+  - {fileID: 3796758120245086421, guid: 40ca89b379485fe43bcb39a566691dbf, type: 3}
+  - {fileID: 3796758120245086421, guid: 63afe728e9794ca4da2cff96f5d8e7b2, type: 3}
+  - {fileID: 3796758120245086421, guid: 7f85371d2bfc8f2438d09bda102a3553, type: 3}
+  - {fileID: 3796758120245086421, guid: 9554709a47921f446beba34d2e96c1df, type: 3}
   roomsPrefab3x3:
   - {fileID: 931843935869113808, guid: 0f800c9f9a785f340bc736f0777d9015, type: 3}
   roomsPrefab4x4:

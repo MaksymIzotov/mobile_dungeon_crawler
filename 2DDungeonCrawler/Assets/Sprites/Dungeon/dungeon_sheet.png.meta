@@ -778,7 +778,7 @@ TextureImporter:
         width: 24
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -799,7 +799,7 @@ TextureImporter:
         width: 24
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -807,6 +807,132 @@ TextureImporter:
       bones: []
       spriteID: 8bbe6337d1beaec4bbdf5d9241c9a664
       internalID: -733600922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trash_1
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 36
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83db85ceac02110408204106970a276c
+      internalID: 2063478811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trash_2
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 36
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ce928641d0c5b44b538de3c5673e89
+      internalID: -934564595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trash_3
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 35
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b7145e5061dcc4b8f9462603e9876e
+      internalID: 1425356134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trash_4
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 37
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f3ca05766ff56b44b01ebb1a56815f2
+      internalID: 1660286959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: darker_ground
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 53
+        width: 2
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81ffb0774dba414d8bb4e3b67d74f40
+      internalID: -2046651002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: darker_ground_large
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 69
+        width: 2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfddac07a282b5c408d3ad1ae2ff1aa9
+      internalID: -2132656059
       vertices: []
       indices: 
       edges: []
@@ -822,10 +948,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      chest_2: -1108318925
       dungeon_wall_bot: -2111504633
       dungeon_pole_leftbot: 1344072910
       dungeon_wall_top_3: -733600922
+      trash_1: 2063478811
       chest_3: -254528780
+      trash_3: 1425356134
       dungeon_left: 169206750
       dungeon_right: -1779207841
       dungeon_bot: -40613659
@@ -834,9 +963,11 @@ TextureImporter:
       totem_unused: 2117788922
       dungeon_wall_left: -2039726425
       dungeon_wall_top: 1359445499
+      darker_ground: -2046651002
       dungeon_leftbot: 481007655
       dungeon_righttop: 1668865047
       dungeon_top: 26589156
+      trash_2: -934564595
       dungeon_pole_righttop: 370148388
       dungeon_lefttop: 481007655
       dungeon_rightbot: -1779207841
@@ -846,15 +977,16 @@ TextureImporter:
       dungeon_corner_rightbot: -379383817
       chest_6: 1730250945
       chest_1: -625116030
+      darker_ground_large: -2132656059
+      trash_4: 1660286959
       dungeon_void: 1758405588
       dungeon_wall_right: 1341410917
-      dungeon_corner_lefttop: 1578904353
-      dungeon_pole_lefttop: 273779839
       dungeon_wall_top_2: -1614434681
+      dungeon_pole_lefttop: 273779839
       chest_4: 646305599
       totem_used_1: -2078419682
       totem_used_2: -629505535
-      chest_2: -1108318925
+      dungeon_corner_lefttop: 1578904353
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
