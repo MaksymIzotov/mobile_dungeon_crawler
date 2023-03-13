@@ -7,6 +7,6 @@ public class AddDamage : Upgrade
 {
     public override void UpgradeStats()
     {
-        Debug.Log("Upgrading damage");
+        MessageShow.instance.ShowNotification("Player damage upgraded");
     }
 }

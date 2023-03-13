@@ -7,6 +7,7 @@ public class AddRegen : Upgrade
 {
     public override void UpgradeStats()
     {
-        Debug.Log("Upgrading regen");
+        MessageShow.instance.ShowNotification("Health regeneration upgraded");
+        //Do upgrade
     }
 }

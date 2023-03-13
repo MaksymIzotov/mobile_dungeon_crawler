@@ -7,6 +7,6 @@ public class AddHP : Upgrade
 {
     public override void UpgradeStats()
     {
-        Debug.Log("Upgrading hp");
+        MessageShow.instance.ShowNotification("Player HP upgraded");
     }
 }

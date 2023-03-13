@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void PlayerProceed()
     {
+        Generator2D.Instance.BuildNavMesh();
         GameSetup.Instance.SpawnPlayer();
         GameManager.instance.SetupTotemsAmount();
     }
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour
         totemsLeft--;
 
         if (totemsLeft <= 0)
+        {
+            MessageShow.instance.ShowNotification("All totems are activated");
             Invoke("DungeonCompleted", 2);
+        }
     }
 }

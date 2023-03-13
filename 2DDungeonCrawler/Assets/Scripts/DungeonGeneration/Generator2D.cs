@@ -67,16 +67,26 @@ public class Generator2D : MonoBehaviour {
 
     private void Start()
     {
+        BuildNavMesh();
         GameSetup.Instance.SpawnPlayer();
         GameManager.instance.SetupTotemsAmount();
     }
 
+    [SerializeField] GameObject pathfinding;
+
+    public void BuildNavMesh()
+    {
+        pathfinding.GetComponent<AstarPath>().Scan();
+    }
+
     public void IncreaseSize()
     {
-        size.x += 5;
-        size.y += 5;
+        if (size.x >= 55) { return; }
 
-        roomCount += 5;
+        size.x += 2;
+        size.y += 2;
+
+        roomCount += 2;
     }
 
     public void Generate() {
@@ -90,9 +100,6 @@ public class Generator2D : MonoBehaviour {
         Triangulate();
         CreateHallways();
         PathfindHallways();
-
-        occupiedPos.Clear();
-        rooms.Clear();
     }
 
 
