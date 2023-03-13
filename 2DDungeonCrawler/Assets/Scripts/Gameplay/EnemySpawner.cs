@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
 
     List<Transform> spawners = new List<Transform>();
 
+    private int enemiesSpawned;
+
     private void Start()
     {
         Invoke("DelayedStart", 0.2f);
@@ -31,14 +33,18 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (GetAllSpawners().Count > 0)
+            if (enemiesSpawned <= 10)
             {
-                spawners.Clear();
-                spawners = GetAllSpawners();
+
+                if (GetAllSpawners().Count > 0)
+                {
+                    spawners.Clear();
+                    spawners = GetAllSpawners();
+                }
+
+                GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);              
+                enemiesSpawned++;
             }
-
-            GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);
-
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);
         }

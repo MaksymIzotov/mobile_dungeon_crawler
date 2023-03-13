@@ -7,13 +7,13 @@ public class ChasingState : EnemyBaseState
 {
     public override void EnterState(EnemyStateManager manager)
     {
-        //manager.gameObject.GetComponent<EnemyAnimationController>().Chase();
-
+        manager.gameObject.GetComponent<EnemyAnimationController>().Chase();
+        manager.GetComponent<EnemyMovementController>().ChangeDestination();
     }
 
     public override void UpdateState(EnemyStateManager manager)
     {
-        manager.GetComponent<EnemyMovementController>().ChangeDestination();
+        
 
         //If player is in attack range check
         

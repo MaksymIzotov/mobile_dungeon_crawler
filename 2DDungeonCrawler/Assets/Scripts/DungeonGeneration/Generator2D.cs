@@ -49,6 +49,7 @@ public class Generator2D : MonoBehaviour {
     GameObject[] roomsPrefab5x5;
     [SerializeField]
     GameObject[] roomsPrefab6x6;
+    [SerializeField] GameObject voidPrefab;
 
     Random random;
     Grid2D<CellType> grid;
@@ -100,6 +101,21 @@ public class Generator2D : MonoBehaviour {
         Triangulate();
         CreateHallways();
         PathfindHallways();
+        FillVoid();
+    }
+
+    private void FillVoid()
+    {
+        for (int i = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                if(grid[i,j] == CellType.None)
+                {
+                    PlaceVoid(new Vector2Int(i, j));
+                }
+            }
+        }
     }
 
 
@@ -284,6 +300,12 @@ public class Generator2D : MonoBehaviour {
         occupiedPos.Add(location);
     }
 
+    void PlaceVoid(Vector2Int location)
+    {
+        GameObject voidGO = Instantiate(voidPrefab, new Vector3(location.x, location.y, 0), Quaternion.identity);
+        voidGO.transform.parent = dungeon.transform;
+    }
+
     private void DestroyWalls(GameObject parent)
     {
         Transform[] allChildren = parent.GetComponentsInChildren<Transform>();
@@ -297,12 +319,10 @@ public class Generator2D : MonoBehaviour {
                 {
                     for (int i = 0; i < hitColliders.Length; i++)
                     {
-                        Destroy(hitColliders[i].gameObject);
+                        if (hitColliders[i].CompareTag(WALL_TAG))
+                            Destroy(hitColliders[i].gameObject);
                     }
                 }
-
-                if (hitColliders.Length > 2)
-                    Debug.Log("YES");
             }
         }
     }

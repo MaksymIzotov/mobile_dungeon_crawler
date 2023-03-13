@@ -9,6 +9,7 @@ TagManager:
   - EnemySpawner
   - Spawnpoint
   - Totem
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - Minimap
   - PathfindingObstacle
-  - 
+  - Void
   - 
   - 
   - 

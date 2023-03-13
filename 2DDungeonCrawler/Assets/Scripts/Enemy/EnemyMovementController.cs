@@ -7,28 +7,40 @@ using UnityEngine;
 public class EnemyMovementController : MonoBehaviour
 {
     private GameObject player;
-    private AIPath aiPath;
+
+    private Vector2 lastPos;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        aiPath = GetComponent<AIPath>();
     }
 
     private void OnEnable()
     {
-        aiPath = GetComponent<AIPath>();
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Update()
+    {
+        if(transform.position.x - player.transform.position.x <= 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        if (transform.position.x - player.transform.position.x >= 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+    }
+
+    private void LateUpdate()
+    {
+        lastPos = transform.position;
     }
 
     public void ChangeDestination()
     {
-        aiPath.destination = player.transform.position;
+        GetComponent<AIDestinationSetter>().target = player.transform;
     }
 
     public void StopAgent()
     {
-        aiPath.destination = transform.position;
+        GetComponent<AIDestinationSetter>().target = transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +49,5 @@ public class EnemyMovementController : MonoBehaviour
 
         GetComponent<EnemyStateManager>().SwitchState(GetComponent<EnemyStateManager>().AttackingState);
         StopAgent();
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player")) { return; }
-
-        GetComponent<EnemyStateManager>().SwitchState(GetComponent<EnemyStateManager>().ChasingState);
     }
 }

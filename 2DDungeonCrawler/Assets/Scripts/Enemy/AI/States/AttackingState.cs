@@ -9,9 +9,8 @@ public class AttackingState : EnemyBaseState
 
     public override void EnterState(EnemyStateManager manager)
     {
-        //manager.gameObject.GetComponent<EnemyAnimationController>().Attack();
+        manager.gameObject.GetComponent<EnemyAttackController>().CanAttackSwitch(true);
 
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void UpdateState(EnemyStateManager manager)
