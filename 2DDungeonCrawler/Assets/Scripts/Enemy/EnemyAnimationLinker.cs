@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class EnemyAnimationLinker : MonoBehaviour
 {
+    private void Attack()
+    {
+        transform.parent.GetComponent<EnemyAttackController>().DealDamage();
+    }
+
     private void Die()
     {
         Destroy(gameObject);

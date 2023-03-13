@@ -7,6 +7,7 @@ public class AddHP : Upgrade
 {
     public override void UpgradeStats()
     {
-        MessageShow.instance.ShowNotification("Player HP upgraded");
+        MessageShow.instance.ShowNotification("Added 10 HP");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>().AddMaxHP(10);
     }
 }

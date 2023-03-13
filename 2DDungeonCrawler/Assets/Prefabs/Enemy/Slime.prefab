@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3119396860198695228}
   - component: {fileID: 3119396860198695226}
   - component: {fileID: 3119396860198695231}
+  - component: {fileID: 8592902995448568134}
   - component: {fileID: 3119396860198695230}
   - component: {fileID: 3119396860198696643}
   - component: {fileID: 3119396860198696640}
@@ -22,7 +23,7 @@ GameObject:
   - component: {fileID: 1478221188620292159}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +87,70 @@ MonoBehaviour:
   AttackingState: {fileID: 11400000, guid: 548033b5874ef5045a8630a18c7109f5, type: 2}
   StunState: {fileID: 0}
   attackPoint: {fileID: 0}
+--- !u!114 &8592902995448568134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119396860198695227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0083ddf5e4110ba41b6bc16201321c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  properties: {fileID: 11400000, guid: e5c6299eee04632448b267e0c0222bef, type: 2}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3119396860198696640}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3119396860198695230}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1478221188620292159}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3119396860198695226}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3119396860198695230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,9 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740df9e953af4864c87c7e283c2da5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  properties: {fileID: 11400000, guid: 352b0a8d18bb6094ea6aaac4677df738, type: 2}
   isAttacking: 0
   canAttack: 0
-  delay: 1
 --- !u!1 &3119396860848347456
 GameObject:
   m_ObjectHideFlags: 0

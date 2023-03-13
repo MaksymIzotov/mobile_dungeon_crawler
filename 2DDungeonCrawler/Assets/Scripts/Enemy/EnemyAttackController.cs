@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class EnemyAttackController : MonoBehaviour
 {
-    //public EnemyAttack properties;
+    public Attack properties;
 
     public bool isAttacking = false;
     public bool canAttack = false;
-
-    [SerializeField] private float delay;
 
     private bool isPlayerNear = false;
 
@@ -42,14 +40,17 @@ public class EnemyAttackController : MonoBehaviour
 
     IEnumerator PerformAttack()
     {
-        if (isPlayerNear)
-        {
-            Debug.Log("Dealing damage");
-        }
-
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(properties.delay);
 
         isAttacking = false;
+    }
+
+    public void DealDamage()
+    {
+        if (isPlayerNear)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>().TakeDamage(properties.damage); //Add multipliers
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

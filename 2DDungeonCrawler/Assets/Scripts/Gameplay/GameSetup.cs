@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameSetup : MonoBehaviour
 {
     public static GameSetup Instance;
+
+    GameObject player;
     private void Awake()
     {
         Instance = this;
@@ -20,12 +22,17 @@ public class GameSetup : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        GameObject player = Instantiate(playerPrefab, GetSpawnPoint().transform.position, Quaternion.identity);
+        player = Instantiate(playerPrefab, GetSpawnPoint().transform.position, Quaternion.identity);
 
         for (int i = 0; i < cameras.Length; i++)
         {
             cameras[i].GetComponent<CameraFollow>().target = player.transform;
         }
+    }
+
+    public void RespawnPlayer()
+    {
+        player.transform.position = GetSpawnPoint().position;
     }
 
     public Transform GetSpawnPoint()

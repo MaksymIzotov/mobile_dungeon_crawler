@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TMP_Text dungeonCounter;
 
+    GameObject player;
+
     private int currentDungeon = 1;
     private int totemsLeft;
     public void DungeonCompleted()
@@ -20,13 +22,9 @@ public class GameManager : MonoBehaviour
         currentDungeon++;
         UpdateDungeonCounter();
 
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            Destroy(enemy);
-        }
-
-        Destroy(GameObject.FindGameObjectWithTag("Player"));
         Destroy(GameObject.Find("Dungeon"));
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
         Generator2D.Instance.IncreaseSize();
 
         Invoke("GenerateDungeon", 0.1f);
@@ -41,7 +39,8 @@ public class GameManager : MonoBehaviour
     private void PlayerProceed()
     {
         Generator2D.Instance.BuildNavMesh();
-        GameSetup.Instance.SpawnPlayer();
+        player.SetActive(true);
+        GameSetup.Instance.RespawnPlayer();
         GameManager.instance.SetupTotemsAmount();
     }
 
@@ -62,6 +61,12 @@ public class GameManager : MonoBehaviour
         if (totemsLeft <= 0)
         {
             MessageShow.instance.ShowNotification("All totems are activated");
+
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                enemy.GetComponent<EnemyHealthController>().TakeDamage(9999);
+            }
+
             Invoke("DungeonCompleted", 2);
         }
     }

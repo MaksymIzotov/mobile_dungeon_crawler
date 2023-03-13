@@ -8,6 +8,6 @@ public class AddRegen : Upgrade
     public override void UpgradeStats()
     {
         MessageShow.instance.ShowNotification("Health regeneration upgraded");
-        //Do upgrade
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>().AddHealtRegen(0.5f);
     }
 }
