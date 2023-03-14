@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public void DungeonCompleted()
     {
         currentDungeon++;
+        PlayerPrefs.SetInt("Highscore", currentDungeon);
+        
         UpdateDungeonCounter();
 
         Destroy(GameObject.Find("Dungeon"));
