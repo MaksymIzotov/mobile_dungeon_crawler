@@ -20,17 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: d9d5b11115e411c4894b5790a3cd6cb7, type: 3}
-    - time: 0.1
-      value: {fileID: 21300000, guid: e470d9dd7cf93a944b33bccbf94eefe3, type: 3}
-    - time: 0.2
-      value: {fileID: 21300000, guid: a24ced30ca5d8fc44b3f35bc2676ae5f, type: 3}
-    - time: 0.3
-      value: {fileID: 21300000, guid: 502492d7fedb31243834bd28cb9ee685, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: 22e5c71fc4651a74cae563aa83fe0d76, type: 3}
+      value: {fileID: -703296941, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - time: 0.083333336
+      value: {fileID: 2144649602, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - time: 0.16666667
+      value: {fileID: -1145786582, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - time: 0.25
+      value: {fileID: 1068690007, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - time: 0.33333334
+      value: {fileID: 181012488, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - time: 0.41666666
+      value: {fileID: 1442643317, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: d9d5b11115e411c4894b5790a3cd6cb7, type: 3}
+      value: {fileID: -71051027, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -51,12 +53,13 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d9d5b11115e411c4894b5790a3cd6cb7, type: 3}
-    - {fileID: 21300000, guid: e470d9dd7cf93a944b33bccbf94eefe3, type: 3}
-    - {fileID: 21300000, guid: a24ced30ca5d8fc44b3f35bc2676ae5f, type: 3}
-    - {fileID: 21300000, guid: 502492d7fedb31243834bd28cb9ee685, type: 3}
-    - {fileID: 21300000, guid: 22e5c71fc4651a74cae563aa83fe0d76, type: 3}
-    - {fileID: 21300000, guid: d9d5b11115e411c4894b5790a3cd6cb7, type: 3}
+    - {fileID: -703296941, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: 2144649602, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: -1145786582, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: 1068690007, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: 181012488, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: 1442643317, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
+    - {fileID: -71051027, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -82,8 +85,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.3
-    functionName: EnemyAttack
+  - time: 0
+    functionName: PlayerAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: PlayerProjectileSpawn
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
