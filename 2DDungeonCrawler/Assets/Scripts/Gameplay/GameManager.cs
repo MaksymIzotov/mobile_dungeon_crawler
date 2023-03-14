@@ -27,7 +27,15 @@ public class GameManager : MonoBehaviour
     public void DungeonCompleted()
     {
         currentDungeon++;
-        PlayerPrefs.SetInt("Highscore", currentDungeon);
+        if (PlayerPrefs.HasKey("Highscore"))
+        {
+            if (PlayerPrefs.GetInt("Highscore") < currentDungeon)
+                PlayerPrefs.SetInt("Highscore", currentDungeon);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Highscore", currentDungeon);
+        }            
         
         UpdateDungeonCounter();
 
