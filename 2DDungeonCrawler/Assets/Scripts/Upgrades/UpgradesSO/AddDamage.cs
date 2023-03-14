@@ -8,5 +8,6 @@ public class AddDamage : Upgrade
     public override void UpgradeStats()
     {
         MessageShow.instance.ShowNotification("Player damage upgraded");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackController>().AddDamage(1);
     }
 }

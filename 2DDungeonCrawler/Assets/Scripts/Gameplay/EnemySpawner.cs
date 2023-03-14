@@ -35,14 +35,14 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemiesSpawned <= 10)
             {
-
                 if (GetAllSpawners().Count > 0)
                 {
                     spawners.Clear();
                     spawners = GetAllSpawners();
                 }
 
-                GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);              
+                GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);
+                enemy.GetComponent<EnemyHealthController>().onDeath.AddListener(EnemyKilled);
                 enemiesSpawned++;
             }
             float delay = Random.Range(minDelay, maxDelay);
@@ -50,11 +50,18 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void EnemyKilled()
+    {
+        enemiesSpawned--;
+    }
+
     private List<Transform> GetAllSpawners()
     {
         List<Transform> buffer = new List<Transform>();
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+            return null;
 
         Transform[] children = GetClosestSpawnPoint(player).parent.GetComponentsInChildren<Transform>();
 

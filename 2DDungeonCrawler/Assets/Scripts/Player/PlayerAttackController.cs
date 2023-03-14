@@ -7,11 +7,32 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private Attack properties;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileParent;
-    [SerializeField] private GameObject[] animationSprites;
+    [SerializeField] private Animator[] animationSprites;
 
     private bool canAttack = true;
 
     private List<GameObject> enemies = new List<GameObject>();
+
+    private void Start()
+    {
+        SetDefaults();
+    }
+
+    private void SetDefaults()
+    {
+        properties.damage = properties.base_damage;
+        properties.delay = properties.base_delay;
+    }
+
+    public void AddDamage(float _damage)
+    {
+        properties.damage += _damage;
+    }
+
+    public void DecreaseDelay(float _delay)
+    {
+        properties.delay -= _delay;
+    }
 
     public void Attack()
     {
@@ -28,7 +49,7 @@ public class PlayerAttackController : MonoBehaviour
         {
             for (int i = 0; i < animationSprites.Length; i++)
             {
-                animationSprites[i].GetComponent<Animator>().SetBool("isEnemyNear", true);
+                animationSprites[i].SetBool("isEnemyNear", true);
             }
         }
         canAttack = true;
@@ -38,13 +59,13 @@ public class PlayerAttackController : MonoBehaviour
     {
         for (int i = 0; i < animationSprites.Length; i++)
         {
-            animationSprites[i].GetComponent<Animator>().SetBool("isEnemyNear", false);
+            animationSprites[i].SetBool("isEnemyNear", false);
         }
 
         GameObject projectile = Instantiate(projectilePrefab, projectileParent);
         projectile.transform.parent = null;
-
-        //Set damage
+        projectile.GetComponent<ProjectileController>().SetupDamage(properties.damage);
+        
     }
 
     public void ChangeEnemiesList(GameObject enemy, bool isAdd)
@@ -59,7 +80,7 @@ public class PlayerAttackController : MonoBehaviour
             {
                 for (int i = 0; i < animationSprites.Length; i++)
                 {
-                    animationSprites[i].GetComponent<Animator>().SetBool("isEnemyNear", true);
+                    animationSprites[i].SetBool("isEnemyNear", true);
                 }
             }
         }
@@ -73,7 +94,7 @@ public class PlayerAttackController : MonoBehaviour
             {
                 for (int i = 0; i < animationSprites.Length; i++)
                 {
-                    animationSprites[i].GetComponent<Animator>().SetBool("isEnemyNear", false);
+                    animationSprites[i].SetBool("isEnemyNear", false);
                 }
             }
         }

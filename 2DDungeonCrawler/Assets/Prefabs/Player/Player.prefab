@@ -276,7 +276,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6562554844445414775, guid: 7b794e794039de74aba4c8bfbe65d612, type: 3}
   projectileParent: {fileID: 3864441362154791077}
   animationSprites:
-  - {fileID: 7114315240730949202}
+  - {fileID: 7114315240730949207}
+  - {fileID: 7114315241933070916}
+  - {fileID: 7114315241897454306}
+  - {fileID: 7114315241881423972}
+  - {fileID: 7114315241653159743}
 --- !u!1 &7114315240730949202
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +867,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 6
 --- !u!114 &407822625665696179
 MonoBehaviour:
   m_ObjectHideFlags: 0

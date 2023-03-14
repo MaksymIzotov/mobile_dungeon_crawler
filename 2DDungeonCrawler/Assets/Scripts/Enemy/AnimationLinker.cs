@@ -22,6 +22,6 @@ public class AnimationLinker : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(transform.root.gameObject);
     }
 }
