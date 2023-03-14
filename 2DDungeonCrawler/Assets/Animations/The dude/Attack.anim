@@ -21,17 +21,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -703296941, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.083333336
+    - time: 0.05
       value: {fileID: 2144649602, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.16666667
+    - time: 0.1
       value: {fileID: -1145786582, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.25
+    - time: 0.16666667
       value: {fileID: 1068690007, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.33333334
+    - time: 0.23333333
       value: {fileID: 181012488, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.41666666
+    - time: 0.28333333
       value: {fileID: 1442643317, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
-    - time: 0.5
+    - time: 0.33333334
       value: {fileID: -71051027, guid: 4b49941d2f5d7c54db9a61a62c163c53, type: 3}
     attribute: m_Sprite
     path: 
@@ -65,7 +65,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,14 +85,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.41666666
+  - time: 0.23333333
     functionName: PlayerAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.23333333
     functionName: PlayerProjectileSpawn
     data: 
     objectReferenceParameter: {fileID: 0}
