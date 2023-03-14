@@ -31,7 +31,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         if (lastHp != hp)
         {
-            //Update enemy ui
+            GetComponent<EnemyHealthbar>().UpdateHealthbarValue(maxhp, hp);
         }
 
         lastHp = hp;

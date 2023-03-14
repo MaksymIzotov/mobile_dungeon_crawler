@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     GameObject player;
 
+    private bool canSpawn = true;
+
     private int currentDungeon = 1;
     private int totemsLeft;
     public void DungeonCompleted()
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
         player.SetActive(true);
         GameSetup.Instance.RespawnPlayer();
         GameManager.instance.SetupTotemsAmount();
+
+        canSpawn = true;
     }
 
     private void UpdateDungeonCounter()
@@ -61,13 +65,20 @@ public class GameManager : MonoBehaviour
         if (totemsLeft <= 0)
         {
             MessageShow.instance.ShowNotification("All totems are activated");
+            canSpawn = false;
 
             foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
                 enemy.GetComponent<EnemyHealthController>().TakeDamage(9999);
+                Destroy(enemy, 2);
             }
 
             Invoke("DungeonCompleted", 2);
         }
+    }
+
+    public bool GetCanSpawn()
+    {
+        return canSpawn;
     }
 }

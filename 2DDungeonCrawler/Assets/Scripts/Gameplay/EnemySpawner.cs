@@ -33,17 +33,20 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            if (enemiesSpawned <= 10)
+            if (GameManager.instance.GetCanSpawn())
             {
-                if (GetAllSpawners().Count > 0)
+                if (enemiesSpawned <= 10)
                 {
-                    spawners.Clear();
-                    spawners = GetAllSpawners();
-                }
+                    if (GetAllSpawners().Count > 0)
+                    {
+                        spawners.Clear();
+                        spawners = GetAllSpawners();
+                    }
 
-                GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);
-                enemy.GetComponent<EnemyHealthController>().onDeath.AddListener(EnemyKilled);
-                enemiesSpawned++;
+                    GameObject enemy = Instantiate(enemies[Random.Range(0, enemies.Length)], spawners[Random.Range(0, spawners.Count)].position, Quaternion.identity);
+                    enemy.GetComponent<EnemyHealthController>().onDeath.AddListener(EnemyKilled);
+                    enemiesSpawned++;
+                }
             }
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);

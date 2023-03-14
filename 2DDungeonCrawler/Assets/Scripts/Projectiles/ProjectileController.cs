@@ -70,6 +70,7 @@ public class ProjectileController : MonoBehaviour
 
         isDestroying = true;
         GetComponent<ParticleSystem>().Stop();
+        GetComponent<CircleCollider2D>().enabled = false;
         Instantiate(projectileDestroyPrefab, transform);
         Destroy(gameObject, 2);
     }
