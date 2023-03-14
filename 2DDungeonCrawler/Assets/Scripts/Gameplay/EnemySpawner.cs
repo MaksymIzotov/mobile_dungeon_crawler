@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     List<Transform> spawners = new List<Transform>();
 
-    private int enemiesSpawned;
+    private int enemiesSpawned = 0;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (GameManager.instance.GetCanSpawn())
             {
-                if (enemiesSpawned <= 10)
+                if (enemiesSpawned <= 7)
                 {
                     if (GetAllSpawners().Count > 0)
                     {

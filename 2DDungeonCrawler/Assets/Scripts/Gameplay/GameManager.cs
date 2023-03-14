@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private TMP_Text dungeonCounter;
+    [SerializeField] private Image loseBackground;
+    [SerializeField] private Image transitionBackground;
+    [SerializeField] private GameObject loseText;
 
     GameObject player;
 
@@ -28,7 +33,7 @@ public class GameManager : MonoBehaviour
 
         Destroy(GameObject.Find("Dungeon"));
         player = GameObject.FindGameObjectWithTag("Player");
-        player.SetActive(false);
+        player.transform.position = new Vector3(-3, -3);
         Generator2D.Instance.IncreaseSize();
 
         Invoke("GenerateDungeon", 0.1f);
@@ -43,9 +48,11 @@ public class GameManager : MonoBehaviour
     private void PlayerProceed()
     {
         Generator2D.Instance.BuildNavMesh();
-        player.SetActive(true);
         GameSetup.Instance.RespawnPlayer();
         GameManager.instance.SetupTotemsAmount();
+
+
+        transitionBackground.color = new Color(transitionBackground.color.r, transitionBackground.color.g, transitionBackground.color.b, 0);
 
         canSpawn = true;
     }
@@ -68,6 +75,7 @@ public class GameManager : MonoBehaviour
         {
             MessageShow.instance.ShowNotification("All totems are activated");
             canSpawn = false;
+            StartCoroutine(TransitionFade());
 
             foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
@@ -77,6 +85,46 @@ public class GameManager : MonoBehaviour
 
             Invoke("DungeonCompleted", 2);
         }
+    }
+
+    public void GameOver()
+    {
+        loseBackground.gameObject.SetActive(true);
+        StartCoroutine(LoseFade());
+    }
+
+    IEnumerator LoseFade()
+    {
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            // set color with i as alpha
+            loseBackground.color = new Color(loseBackground.color.r, loseBackground.color.g, loseBackground.color.b, i);
+            yield return null;
+        }
+
+        loseBackground.color = new Color(loseBackground.color.r, loseBackground.color.g, loseBackground.color.b, 255);
+        loseText.SetActive(true);
+        loseText.GetComponent<TMP_Text>().text = "Dungeon reached: " + currentDungeon;
+
+        Time.timeScale = 0;
+    }
+
+    IEnumerator TransitionFade()
+    {
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            // set color with i as alpha
+            transitionBackground.color = new Color(transitionBackground.color.r, transitionBackground.color.g, transitionBackground.color.b, i);
+            yield return null;
+        }
+
+        transitionBackground.color = new Color(transitionBackground.color.r, transitionBackground.color.g, transitionBackground.color.b, 255);
+    }
+
+    public void OpenMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     public bool GetCanSpawn()

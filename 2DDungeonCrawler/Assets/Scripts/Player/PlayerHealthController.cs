@@ -68,6 +68,8 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (isDead) { return; }
 
+        GetComponent<PlayerMovementControl>().enabled = false;
+        GameManager.instance.GameOver();
         isDead = true;
     }
 

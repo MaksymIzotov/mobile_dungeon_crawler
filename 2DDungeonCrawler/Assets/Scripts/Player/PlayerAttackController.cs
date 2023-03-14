@@ -45,14 +45,14 @@ public class PlayerAttackController : MonoBehaviour
 
         yield return new WaitForSeconds(properties.delay);
 
+        canAttack = true;
         if (enemies.Count > 0)
         {
             for (int i = 0; i < animationSprites.Length; i++)
             {
                 animationSprites[i].SetBool("isEnemyNear", true);
             }
-        }
-        canAttack = true;
+        } 
     }
 
     public void SpawnProjectile()
