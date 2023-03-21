@@ -72,6 +72,11 @@ public class UpgradesController : MonoBehaviour
                 availableUpgrades.Remove(selectedUpgrades[index]);
         }
 
+        foreach (GameObject totem in GameObject.FindGameObjectsWithTag("Totem"))
+        {
+            totem.GetComponent<CircleCollider2D>().enabled = true;
+        }
+
         upgradesParent.SetActive(false);
 
         UnpauseGame();

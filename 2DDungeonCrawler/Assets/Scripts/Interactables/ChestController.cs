@@ -19,6 +19,11 @@ public class ChestController : MonoBehaviour
         if (isUsed) { return; }
         if (!collision.CompareTag("Player")) { return; }
 
+        foreach (GameObject totem in GameObject.FindGameObjectsWithTag("Totem"))
+        {
+            totem.GetComponent<CircleCollider2D>().enabled = false;
+        }
+
         animator.Play("Use");
         isUsed = true;
     }
