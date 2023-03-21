@@ -49,7 +49,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (isPlayerNear)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>().TakeDamage(properties.damage); //Add multipliers
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>().TakeDamage(properties.damage * GameManager.instance.difficulty.enemyDamageMult); //Add multipliers
         }
     }
 

@@ -18,12 +18,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image transitionBackground;
     [SerializeField] private GameObject loseText;
 
+    public Difficulty difficulty;
+
     GameObject player;
 
     private bool canSpawn = true;
 
     private int currentDungeon = 1;
     private int totemsLeft;
+
+    private void Start()
+    {
+        difficulty.enemyHpMult = 1;
+        difficulty.enemyDamageMult = 1;
+    }
+
     public void DungeonCompleted()
     {
         currentDungeon++;
@@ -43,6 +52,9 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = new Vector3(-3, -3);
         Generator2D.Instance.IncreaseSize();
+
+        difficulty.enemyHpMult *= 1.1f;
+        difficulty.enemyDamageMult *= 1.1f;
 
         Invoke("GenerateDungeon", 0.1f);
         Invoke("PlayerProceed", 0.15f);

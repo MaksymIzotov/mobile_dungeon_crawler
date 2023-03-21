@@ -1481,6 +1481,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9178d52754388074bacdd9468af6a212, type: 2}
   - {fileID: 11400000, guid: 7074254098b61074797b1600c0da8e61, type: 2}
   - {fileID: 11400000, guid: ad652acc6593c1243bf6efbc1320d6ce, type: 2}
+  - {fileID: 11400000, guid: c20c1b372b00e884dac77b7e780606ab, type: 2}
+  - {fileID: 11400000, guid: 1f58fd85c224b4a45bdc6f9479ca1e27, type: 2}
+  - {fileID: 11400000, guid: 07d9ed69e787a1b45b8ad83eb479ed9f, type: 2}
+  - {fileID: 11400000, guid: dfdef4a54072e294f9c21232c4647539, type: 2}
   upgradesParent: {fileID: 1339112706}
   upgradesImages:
   - {fileID: 2081433283}
@@ -1502,6 +1506,7 @@ MonoBehaviour:
   loseBackground: {fileID: 413975312}
   transitionBackground: {fileID: 1199925910}
   loseText: {fileID: 233366924}
+  difficulty: {fileID: 11400000, guid: 46b8b73c68da0b040bf3d05d2c169274, type: 2}
 --- !u!114 &1302509407
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR;
 using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private Animator[] animationSprites;
 
     private bool canAttack = true;
+    private bool isExplosive = false;
+
+    [SerializeField] private float projectileSpeed;
 
     private List<GameObject> enemies = new List<GameObject>();
 
@@ -22,6 +26,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         properties.damage = properties.base_damage;
         properties.delay = properties.base_delay;
+        properties.explosionRadius = properties.base_explosionRadius;
     }
 
     public void AddDamage(float _damage)
@@ -32,6 +37,21 @@ public class PlayerAttackController : MonoBehaviour
     public void DecreaseDelay(float _delay)
     {
         properties.delay -= _delay;
+    }
+
+    public void SetIsExplosive(bool value)
+    {
+        isExplosive = value;
+    }
+
+    public void AddExplosioRadius(float value)
+    {
+        properties.explosionRadius += value;
+    }
+
+    public void AddProjectileSpeed(float value)
+    {
+        projectileSpeed += value;
     }
 
     public void Attack()
@@ -64,7 +84,7 @@ public class PlayerAttackController : MonoBehaviour
 
         GameObject projectile = Instantiate(projectilePrefab, projectileParent);
         projectile.transform.parent = null;
-        projectile.GetComponent<ProjectileController>().SetupDamage(properties.damage);
+        projectile.GetComponent<ProjectileController>().SetupDamage(properties.damage, projectileSpeed, isExplosive, properties.explosionRadius);
         
     }
 

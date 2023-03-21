@@ -35,4 +35,9 @@ public class PlayerMovementControl : MonoBehaviour
     {
         body.MovePosition(body.position + movement * runSpeed * Time.fixedDeltaTime);
     }
+
+    public void AddSpeed(float _speed)
+    {
+        runSpeed += _speed;
+    }
 }

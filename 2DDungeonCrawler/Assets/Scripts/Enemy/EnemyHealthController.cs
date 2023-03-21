@@ -77,7 +77,7 @@ public class EnemyHealthController : MonoBehaviour
     private void SetValues()
     {
         //Add mult
-        maxhp = properties.healthPoints;
+        maxhp = properties.healthPoints * GameManager.instance.difficulty.enemyHpMult;
         hp = maxhp;
         defence = properties.defence;
         hpRegen = properties.healthRegen;

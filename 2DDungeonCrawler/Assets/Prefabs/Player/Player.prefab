@@ -281,6 +281,7 @@ MonoBehaviour:
   - {fileID: 7114315241897454306}
   - {fileID: 7114315241881423972}
   - {fileID: 7114315241653159743}
+  projectileSpeed: 0.5
 --- !u!1 &7114315240730949202
 GameObject:
   m_ObjectHideFlags: 0

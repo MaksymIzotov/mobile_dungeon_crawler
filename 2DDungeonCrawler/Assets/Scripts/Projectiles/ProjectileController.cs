@@ -7,14 +7,19 @@ public class ProjectileController : MonoBehaviour
     private Transform enemy;
     [SerializeField] private GameObject projectileDestroyPrefab;
 
-    [SerializeField] private float speed;
+    private float speed;
 
     private float damage;
     private bool isDestroying = false;
+    private bool isExplosive = false;
+    private float explosionRadius;
 
-    public void SetupDamage(float _damage)
+    public void SetupDamage(float _damage, float _speed, bool _isExplosive, float _explosionRadius)
     {
         damage = _damage;
+        isExplosive = _isExplosive;
+        explosionRadius = _explosionRadius;
+        speed = _speed;
     }
 
     private void Update()
@@ -33,7 +38,21 @@ public class ProjectileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
+            if (isExplosive)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), explosionRadius);
+                foreach(Collider2D col in colliders)
+                {
+                    if (col.CompareTag("Enemy"))
+                    {
+                        col.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
+                    }
+                }
+            }
+            else
+            {
+                collision.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
+            }
             DestroyParticles();
         }
     }

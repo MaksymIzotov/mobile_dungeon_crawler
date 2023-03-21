@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,12 +13,24 @@ public class UpgradesController : MonoBehaviour
         Instance = this;
     }
 
-    public Upgrade[] listOfUpgrades;
+    [SerializeField] private List<Upgrade> listOfUpgrades = new List<Upgrade>();
+    private List<Upgrade> availableUpgrades = new List<Upgrade>();
 
     private Upgrade[] selectedUpgrades = new Upgrade[3];
 
     [SerializeField] private GameObject upgradesParent;
     [SerializeField] private Image[] upgradesImages;
+
+    private void Start()
+    {
+        ResetUpgrades();
+        SetupUpgrades();
+    }
+
+    private void SetupUpgrades()
+    {
+        availableUpgrades = listOfUpgrades;
+    }
 
     public void GenerateUpgrades()
     {
@@ -25,7 +38,7 @@ public class UpgradesController : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            selectedUpgrades[i] = listOfUpgrades[Random.Range(0, listOfUpgrades.Length)];
+            selectedUpgrades[i] = listOfUpgrades[Random.Range(0, listOfUpgrades.Count)];
         }
 
         for (int i = 0; i < upgradesImages.Length; i++)
@@ -39,6 +52,13 @@ public class UpgradesController : MonoBehaviour
     public void PickUpgrade(int index)
     {
         selectedUpgrades[index].UpgradeStats();
+        selectedUpgrades[index].level++;
+
+        if (selectedUpgrades[index].level >= selectedUpgrades[index].maxLevel)
+        {
+            //Delete from list
+            availableUpgrades.Remove(selectedUpgrades[index]);
+        }
 
         upgradesParent.SetActive(false);
 
@@ -54,5 +74,12 @@ public class UpgradesController : MonoBehaviour
     public void UnpauseGame()
     {
         Time.timeScale = 1;
+    }
+
+    private void ResetUpgrades()
+    {
+        foreach (Upgrade upgrade in listOfUpgrades) {
+            upgrade.level = 0;
+        }
     }
 }

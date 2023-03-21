@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b0656df12a36b4d8cfdb262d5dde85, type: 3}
-  m_Name: Regen
+  m_Script: {fileID: 11500000, guid: c4a77a44f610920459acb6e6df88badf, type: 3}
+  m_Name: Speed
   m_EditorClassIdentifier: 
-  upgradeName: Regen
-  icon: {fileID: 21300000, guid: bce6db25710fe0044a8da81e41d5db03, type: 3}
+  upgradeName: Speed
+  icon: {fileID: 21300000, guid: b7e6aaa5f3298554e9b8acd215ff368a, type: 3}
   level: 0
-  maxLevel: 50
+  maxLevel: 2

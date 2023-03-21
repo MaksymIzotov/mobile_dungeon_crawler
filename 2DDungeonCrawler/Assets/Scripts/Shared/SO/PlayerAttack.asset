@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   delay: 2
+  explosionRadius: 0.1
   base_damage: 5
   base_delay: 2
+  base_explosionRadius: 0.1
