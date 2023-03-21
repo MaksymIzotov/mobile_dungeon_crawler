@@ -6,6 +6,8 @@ public class ChestController : MonoBehaviour
 {
     private Animator animator;
 
+    [SerializeField] private bool isSuper;
+
     private bool isUsed;
     private void Start()
     {
@@ -23,6 +25,6 @@ public class ChestController : MonoBehaviour
 
     private void GiveUpgrade()
     {
-        UpgradesController.Instance.GenerateUpgrades();
+        UpgradesController.Instance.GenerateUpgrades(isSuper);
     }
 }

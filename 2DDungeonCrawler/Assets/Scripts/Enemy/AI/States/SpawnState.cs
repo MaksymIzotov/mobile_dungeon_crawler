@@ -17,7 +17,7 @@ public class SpawnState : EnemyBaseState
 
         if (Vector3.Distance(manager.transform.localScale, Vector3.one) < 0.05f)
         {
-            manager.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+            manager.transform.GetComponentInChildren<CircleCollider2D>().enabled = true;
             manager.transform.localScale = Vector3.one;
             manager.SwitchState(manager.ChasingState);
         }

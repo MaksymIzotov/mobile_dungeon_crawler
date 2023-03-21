@@ -53,17 +53,8 @@ public class EnemyAttackController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SetIsPLayerNear(bool value)
     {
-        if (!collision.CompareTag("Player")) { return; }
-
-        isPlayerNear = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player")) { return; }
-
-        isPlayerNear = false;
+        isPlayerNear = value;
     }
 }

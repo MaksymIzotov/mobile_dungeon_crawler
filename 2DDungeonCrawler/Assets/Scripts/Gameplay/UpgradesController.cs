@@ -14,13 +14,16 @@ public class UpgradesController : MonoBehaviour
     }
 
     [SerializeField] private List<Upgrade> listOfUpgrades = new List<Upgrade>();
+    [SerializeField] private List<Upgrade> listOfSuperUpgrades = new List<Upgrade>();
     private List<Upgrade> availableUpgrades = new List<Upgrade>();
+    private List<Upgrade> availableSuperUpgrades = new List<Upgrade>();
 
     private Upgrade[] selectedUpgrades = new Upgrade[3];
 
     [SerializeField] private GameObject upgradesParent;
     [SerializeField] private Image[] upgradesImages;
 
+    private bool isSuper;
     private void Start()
     {
         ResetUpgrades();
@@ -30,15 +33,21 @@ public class UpgradesController : MonoBehaviour
     private void SetupUpgrades()
     {
         availableUpgrades = listOfUpgrades;
+        availableSuperUpgrades = listOfSuperUpgrades;
     }
 
-    public void GenerateUpgrades()
+    public void GenerateUpgrades(bool _isSuper)
     {
+        isSuper = _isSuper;
+
         upgradesParent.SetActive(true);
 
         for (int i = 0; i < 3; i++)
         {
-            selectedUpgrades[i] = listOfUpgrades[Random.Range(0, listOfUpgrades.Count)];
+            if (isSuper)
+                selectedUpgrades[i] = listOfSuperUpgrades[Random.Range(0, listOfSuperUpgrades.Count)];
+            else
+                selectedUpgrades[i] = listOfUpgrades[Random.Range(0, listOfUpgrades.Count)];
         }
 
         for (int i = 0; i < upgradesImages.Length; i++)
@@ -57,14 +66,16 @@ public class UpgradesController : MonoBehaviour
         if (selectedUpgrades[index].level >= selectedUpgrades[index].maxLevel)
         {
             //Delete from list
-            availableUpgrades.Remove(selectedUpgrades[index]);
+            if (isSuper)
+                availableSuperUpgrades.Remove(selectedUpgrades[index]);
+            else
+                availableUpgrades.Remove(selectedUpgrades[index]);
         }
 
         upgradesParent.SetActive(false);
 
         UnpauseGame();
     }
-
 
     public void PauseGame()
     {

@@ -43,10 +43,8 @@ public class EnemyMovementController : MonoBehaviour
         GetComponent<AIDestinationSetter>().target = transform;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void IsPlayerNear()
     {
-        if (!collision.CompareTag("Player")) { return; }
-
         GetComponent<EnemyStateManager>().SwitchState(GetComponent<EnemyStateManager>().AttackingState);
         StopAgent();
     }

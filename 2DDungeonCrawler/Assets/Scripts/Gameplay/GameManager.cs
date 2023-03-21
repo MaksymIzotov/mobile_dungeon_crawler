@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(-3, -3);
         Generator2D.Instance.IncreaseSize();
 
-        difficulty.enemyHpMult *= 1.1f;
-        difficulty.enemyDamageMult *= 1.1f;
+        difficulty.enemyHpMult *= 1.25f;
+        difficulty.enemyDamageMult *= 1.2f;
 
         Invoke("GenerateDungeon", 0.1f);
         Invoke("PlayerProceed", 0.15f);
@@ -101,6 +101,11 @@ public class GameManager : MonoBehaviour
             {
                 enemy.GetComponent<EnemyHealthController>().TakeDamage(9999);
                 Destroy(enemy, 2);
+            }
+
+            foreach (GameObject chest in GameObject.FindGameObjectsWithTag("Chest"))
+            {
+                chest.GetComponent<CircleCollider2D>().enabled = false;
             }
 
             Invoke("DungeonCompleted", 2);
