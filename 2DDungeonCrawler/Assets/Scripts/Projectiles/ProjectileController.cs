@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
     private Transform enemy;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject projectileDestroyPrefab;
 
     private float speed;
@@ -14,12 +16,19 @@ public class ProjectileController : MonoBehaviour
     private bool isExplosive = false;
     private float explosionRadius;
 
+    private int multipleAttackAmount;
+
     public void SetupDamage(float _damage, float _speed, bool _isExplosive, float _explosionRadius)
     {
         damage = _damage;
         isExplosive = _isExplosive;
         explosionRadius = _explosionRadius;
         speed = _speed;
+    }
+
+    public void SetupMultipleAttacks(int _amount)
+    {
+        multipleAttackAmount = _amount;
     }
 
     private void Update()
@@ -45,15 +54,30 @@ public class ProjectileController : MonoBehaviour
                 {
                     if (col.CompareTag("Enemy"))
                     {
-                        col.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
+                        DealDamage(col.gameObject);
                     }
                 }
             }
             else
             {
-                collision.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
+                DealDamage(collision.gameObject);
             }
             DestroyParticles();
+        }
+    }
+
+    private void DealDamage(GameObject enemy)
+    {
+        enemy.GetComponent<EnemyHealthController>().TakeDamage(damage);
+
+        if(multipleAttackAmount > 0)
+        {
+            Vector3 spawnPos = enemy.transform.position + Random.insideUnitSphere;
+            spawnPos.z = 0;
+            GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+            projectile.GetComponent<ProjectileController>().SetupDamage(damage, speed, isExplosive, explosionRadius);
+            projectile.GetComponent<ProjectileController>().SetupMultipleAttacks(multipleAttackAmount - 1);
         }
     }
 

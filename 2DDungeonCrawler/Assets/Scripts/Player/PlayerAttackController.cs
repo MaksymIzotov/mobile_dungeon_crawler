@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.XR;
 using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour
@@ -12,6 +11,8 @@ public class PlayerAttackController : MonoBehaviour
 
     private bool canAttack = true;
     private bool isExplosive = false;
+
+    private int attacksAmount = 0;
 
     [SerializeField] private float projectileSpeed;
 
@@ -47,6 +48,11 @@ public class PlayerAttackController : MonoBehaviour
     public void AddExplosioRadius(float value)
     {
         properties.explosionRadius += value;
+    }
+
+    public void SetMultipleAttack(int amount)
+    {
+        attacksAmount += amount;
     }
 
     public void AddProjectileSpeed(float value)
@@ -85,7 +91,7 @@ public class PlayerAttackController : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, projectileParent);
         projectile.transform.parent = null;
         projectile.GetComponent<ProjectileController>().SetupDamage(properties.damage, projectileSpeed, isExplosive, properties.explosionRadius);
-        
+        projectile.GetComponent<ProjectileController>().SetupMultipleAttacks(attacksAmount);
     }
 
     public void ChangeEnemiesList(GameObject enemy, bool isAdd)
