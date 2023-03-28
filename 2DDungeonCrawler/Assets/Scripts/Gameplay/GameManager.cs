@@ -14,9 +14,14 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private TMP_Text dungeonCounter;
+    [SerializeField] private TMP_Text enemiesCounter;
+    [SerializeField] private TMP_Text totemsCounter;
     [SerializeField] private Image loseBackground;
     [SerializeField] private Image transitionBackground;
     [SerializeField] private GameObject loseText;
+
+    [SerializeField] private int enemiesMin;
+    [SerializeField] private int enemiesMax;
 
     public Difficulty difficulty;
 
@@ -27,10 +32,21 @@ public class GameManager : MonoBehaviour
     private int currentDungeon = 1;
     private int totemsLeft;
 
+    private int enemiesLeft = 1;
+
+    private bool totemsDestroyed = false;
+    private bool enemiesKilled = false;
+
     private void Start()
     {
         difficulty.enemyHpMult = 1;
         difficulty.enemyDamageMult = 1;
+    }
+
+    private void Update()
+    {
+        if (enemiesKilled && totemsDestroyed)
+            DestroyAllEnemies();
     }
 
     public void DungeonCompleted()
@@ -56,6 +72,9 @@ public class GameManager : MonoBehaviour
         difficulty.enemyHpMult *= 1.25f;
         difficulty.enemyDamageMult *= 1.2f;
 
+        enemiesMin++;
+        enemiesMax++;
+
         Invoke("GenerateDungeon", 0.1f);
         Invoke("PlayerProceed", 0.15f);
     }
@@ -69,7 +88,8 @@ public class GameManager : MonoBehaviour
     {
         Generator2D.Instance.BuildNavMesh();
         GameSetup.Instance.RespawnPlayer();
-        GameManager.instance.SetupTotemsAmount();
+        SetupTotemsAmount();
+        SetupEnemiesAmount();
 
 
         transitionBackground.color = new Color(transitionBackground.color.r, transitionBackground.color.g, transitionBackground.color.b, 0);
@@ -85,31 +105,63 @@ public class GameManager : MonoBehaviour
     public void SetupTotemsAmount()
     {
         totemsLeft = GameObject.FindGameObjectsWithTag("Totem").Length;
+
+        totemsCounter.text = "Totems left: " + totemsLeft;
+    }
+
+    public void SetupEnemiesAmount()
+    {
+        enemiesLeft = Random.Range(enemiesMin, enemiesMax);
+
+        enemiesCounter.text = "Enemies goal: " + enemiesLeft;
     }
 
     public void ActivateTotem()
     {
         totemsLeft--;
+        totemsCounter.text = "Totems left: " + totemsLeft;
 
         if (totemsLeft <= 0)
         {
             MessageShow.instance.ShowNotification("All totems are activated");
-            canSpawn = false;
-            StartCoroutine(TransitionFade());
-
-            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                enemy.GetComponent<EnemyHealthController>().TakeDamage(9999);
-                Destroy(enemy, 2);
-            }
-
-            foreach (GameObject chest in GameObject.FindGameObjectsWithTag("Chest"))
-            {
-                chest.GetComponent<CircleCollider2D>().enabled = false;
-            }
-
-            Invoke("DungeonCompleted", 2);
+            totemsDestroyed = true;
         }
+    }
+
+    public void EnemyKilled()
+    {
+        if (enemiesLeft <= 0) return;
+
+        enemiesLeft--;
+        enemiesCounter.text = "Enemies goal: " + enemiesLeft;
+
+        if (enemiesLeft <= 0)
+        {
+            MessageShow.instance.ShowNotification("Enemies kill goal is reached");
+            enemiesKilled = true;
+        }
+    }
+
+    private void DestroyAllEnemies()
+    {
+        totemsDestroyed = false;
+        enemiesKilled = false;
+
+        canSpawn = false;
+        StartCoroutine(TransitionFade());
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.GetComponent<EnemyHealthController>().TakeDamage(9999);
+            Destroy(enemy, 2);
+        }
+
+        foreach (GameObject chest in GameObject.FindGameObjectsWithTag("Chest"))
+        {
+            chest.GetComponent<CircleCollider2D>().enabled = false;
+        }
+
+        Invoke("DungeonCompleted", 2);
     }
 
     public void GameOver()

@@ -11,7 +11,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyBaseState AttackingState;
     public EnemyBaseState StunState;
 
-    public GameObject attackPoint;
+    public Attack attack;
 
     private void Start()
     {

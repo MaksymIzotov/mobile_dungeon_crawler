@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd2b1aa3eef99c41bfcf98f2e530530, type: 3}
+  m_Name: ExplosiveAttackState
+  m_EditorClassIdentifier: 
+  explosionParticles: {fileID: 9015867459034245365, guid: 2c110b6182e7c8a4e80cc9fb552e8a14, type: 3}

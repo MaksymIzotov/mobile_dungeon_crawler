@@ -8,7 +8,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) { return; }
 
-        transform.root.GetComponent<EnemyAttackController>().SetIsPLayerNear(true);
+        transform.root.GetComponent<EnemyAttackController>()?.SetIsPLayerNear(true);
         transform.root.GetComponent<EnemyMovementController>().IsPlayerNear();
 
     }
@@ -17,6 +17,6 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) { return; }
 
-        transform.root.GetComponent<EnemyAttackController>().SetIsPLayerNear(false);
+        transform.root.GetComponent<EnemyAttackController>()?.SetIsPLayerNear(false);
     }
 }

@@ -1,7 +1,6 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
@@ -9,6 +8,8 @@ public class EnemyMovementController : MonoBehaviour
     private GameObject player;
 
     private Vector2 lastPos;
+
+    [SerializeField] private bool isReverse;
 
     private void Start()
     {
@@ -22,10 +23,20 @@ public class EnemyMovementController : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.x - player.transform.position.x <= 0)
-            GetComponentInChildren<SpriteRenderer>().flipX = true;
-        if (transform.position.x - player.transform.position.x >= 0)
-            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        if (isReverse)
+        {
+            if (transform.position.x - player.transform.position.x <= 0)
+                GetComponentInChildren<SpriteRenderer>().flipX = false;
+            if (transform.position.x - player.transform.position.x >= 0)
+                GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            if (transform.position.x - player.transform.position.x <= 0)
+                GetComponentInChildren<SpriteRenderer>().flipX = true;
+            if (transform.position.x - player.transform.position.x >= 0)
+                GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
     }
 
     private void LateUpdate()

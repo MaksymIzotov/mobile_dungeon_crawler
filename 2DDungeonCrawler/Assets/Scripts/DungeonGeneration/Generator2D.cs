@@ -70,7 +70,8 @@ public class Generator2D : MonoBehaviour {
     {
         BuildNavMesh();
         GameSetup.Instance.SpawnPlayer();
-        GameManager.instance.SetupTotemsAmount();
+        GameManager.instance.SetupTotemsAmount(); 
+        GameManager.instance.SetupEnemiesAmount();
     }
 
     [SerializeField] GameObject pathfinding;

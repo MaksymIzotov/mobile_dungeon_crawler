@@ -55,6 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemyKilled()
     {
+        GameManager.instance.EnemyKilled();
         enemiesSpawned--;
     }
 
