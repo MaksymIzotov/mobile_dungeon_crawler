@@ -1661,6 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
+  - {fileID: 8007752877405909700, guid: d900725d0f9fbe7478edec047c508f16, type: 3}
   - {fileID: 6823150812846750857, guid: 5cd1c29a545361f459db4e20f344c5a5, type: 3}
   - {fileID: 3119396860198695227, guid: abac41f57d7221a4584a19635313363a, type: 3}
   minDelay: 3
